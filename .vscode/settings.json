@@ -36,5 +36,6 @@
   },
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "terminal.integrated.defaultProfile.windows": "Git Bash"
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "C_Cpp.errorSquiggles": "enabled"
 }

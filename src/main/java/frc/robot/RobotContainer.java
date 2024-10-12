@@ -9,8 +9,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Robot.RobotRunType;
-import frc.robot.commands.ElevatorUp;
-import frc.robot.subsystems.Elevator;
+import frc.robot.subsystems.Intake;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -23,12 +22,13 @@ public class RobotContainer {
     private final CommandXboxController driver = new CommandXboxController(Constants.driverID);
     private final CommandXboxController operator = new CommandXboxController(Constants.operatorID);
 
-    private final Trigger elevatorUp = driver.povUp();
+
     // Initialize AutoChooser Sendable
     private final SendableChooser<String> autoChooser = new SendableChooser<>();
 
     /* Subsystems */
-    private final Elevator elevator = new Elevator();
+
+    Intake intake = new Intake();
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -46,7 +46,7 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        elevatorUp.whileTrue(new ElevatorUp(elevator));
+        
     }
 
     /**
