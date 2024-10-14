@@ -12,13 +12,15 @@ public class intakeCommand extends Command{
         this.intake = intake;
     }
 
-
     @Override
-    public void initialize() {}
+    public void initialize() {
+        // TODO Auto-generated method stub
+        super.initialize();
+    }
 
     @Override
     public void execute() {
-        intake.intake();
+        Intake.intake();
     }
 
     @Override

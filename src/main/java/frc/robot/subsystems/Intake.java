@@ -1,11 +1,13 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase{
 
-    VictorSP intakeMotor1 = new  VictorSP(1);
+    static VictorSP intakeMotor1 = new  VictorSP(1);
     VictorSP intakeMotor2 = new  VictorSP(2);
     public Intake() {
 //inverts the motor turn direction (ture = yes)
@@ -14,7 +16,7 @@ public class Intake extends SubsystemBase{
             intakeMotor1.addFollower(intakeMotor2);
     }
 
-    public void setPower(double power) {
+    public static void setPower(double power) {
         intakeMotor1.set(power);
     }
     
@@ -22,7 +24,7 @@ public class Intake extends SubsystemBase{
         setPower(-0.7);
     }
 
-    public void Outake() {
+    public static void Outake() {
         setPower(0.7);
     }
 
@@ -31,6 +33,6 @@ public class Intake extends SubsystemBase{
     }
 
     public Command intakeCommand() {
-        return Commands.runEnd(() -> intake(), () -> stop(), this);
+        return Commands.runEnd(this::intake, () -> stop(), this); //.until(() -> beambreak.get()
     }
 }
