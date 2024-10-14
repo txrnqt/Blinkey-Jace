@@ -24,7 +24,7 @@ public class Intake extends SubsystemBase{
         setPower(-0.7);
     }
 
-    public static void Outake() {
+    public void Outake() {
         setPower(0.7);
     }
 
@@ -34,5 +34,8 @@ public class Intake extends SubsystemBase{
 
     public Command intakeCommand() {
         return Commands.runEnd(this::intake, () -> stop(), this); //.until(() -> beambreak.get()
+    }
+    public Command outakeCommand() {
+        return Commands.runEnd(this::Outake, () -> stop());
     }
 }

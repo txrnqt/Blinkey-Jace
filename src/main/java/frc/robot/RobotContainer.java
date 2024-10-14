@@ -48,8 +48,9 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         driver.leftStick().whileTrue(new InstantCommand(() -> Drive.drive(0, 0), drive));
-        driver.y().whileTrue(new InstantCommand(() -> Intake.intake(), intake));
-        driver.x().whileTrue(new InstantCommand(() -> Intake.Outake(), intake));
+        driver.y().whileTrue(new Command(() -> Intake.intake(), intake));
+        driver.x().whileTrue(new Command(() -> Intake.Outake(), intake));
+        
     }       
 
     /**
