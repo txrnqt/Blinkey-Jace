@@ -7,10 +7,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Robot.RobotRunType;
-import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.LEDs;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -30,12 +29,13 @@ public class RobotContainer {
     /* Subsystems */
 
     Intake intake = new Intake();
-    Drive drive = new Drive();
+    LEDs leds = new LEDs(9, 10);
+
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer(RobotRunType runtimeType) {
-
+        leds.setDefaultCommand(leds.setAllianceColor().ignoringDisable(true));
         // Configure the button bindings
         configureButtonBindings();
     }
@@ -47,11 +47,10 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        driver.leftStick().whileTrue(new InstantCommand(() -> Drive.drive(0, 0), drive));
-        driver.y().whileTrue(new Command(() -> Intake.intake(), intake));
-        driver.x().whileTrue(new Command(() -> Intake.Outake(), intake));
-        
-    }       
+        driver.y().whileTrue(intake.intakeCommand());
+        driver.x().whileTrue(intake.outakeCommand());
+
+    }
 
     /**
      * Gets the user's selected autonomous command.

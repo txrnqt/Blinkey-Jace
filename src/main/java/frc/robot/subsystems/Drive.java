@@ -35,8 +35,13 @@ public class Drive extends SubsystemBase {
         backLeft.set(0);
         backRight.set(0);
     }
-    public Command driceCommand() {
-        return Commands.runEnd(() -> drive(0, 0), () -> stop(), this);
+    
+    public Command driveCommand() {
+        return Commands.runEnd(this::drive(0, 0), () -> stop(), this);
+    }
+    
+    public Command turnLCommand() {
+        return Commands.runEnd(this::turnLeft, () -> stop());
     }
 
 }
