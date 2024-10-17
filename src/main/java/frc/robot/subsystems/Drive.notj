@@ -13,32 +13,17 @@ public class Drive extends SubsystemBase {
     double left = 0;
     double right = 0;
 
-    public Drive() {
-        backLeft.addFollower(frontLeft);
+    backLeft.addFollower(frontLeft);
         backRight.addFollower(frontRight);
+
+    public nrive(double leftvoltage, double rightvoltage) {
+        backLeft.set(leftvoltage);
+        backRight.set(rightvoltage);
+        
     }
 
-    public void drive() {
-        backLeft.set(left);
-        backRight.set(right);
+    public command driveCommand() {
+        return Commands.(this::nrive, () -> stop());
     }
-
-    public void turn() {
-        backLeft.set(-0.5);
-        backRight.set(0.5);
-    }
-
-    public void stop() {
-        backLeft.set(0);
-        backRight.set(0);
-    }
-
-    public Command driveCommand() {
-        return Commands.runEnd(this::drive, () -> stop(), this);
-    }
-
-    public Command turnCommand() {
-        return Commands.runEnd(this::turn, () -> stop());
-    }
-
 }
+

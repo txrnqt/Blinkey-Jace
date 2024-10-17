@@ -23,7 +23,7 @@ public class LEDs extends SubsystemBase {
 
     public void setColor(Color colors) {
         for (var i = 0; i < buffer.getLength(); i++) {
-            buffer.setLED(1, colors);
+            buffer.setLED(i, colors);
         }
         leds.setData(buffer);
     }
@@ -48,6 +48,4 @@ public class LEDs extends SubsystemBase {
         Color green = Color.kGreen;
         return Commands.run(() -> setColor(green));
     }
-
-
 }

@@ -40,3 +40,4 @@ public class Intake extends SubsystemBase{
         return Commands.runEnd(this::Outake, () -> stop());
     }
 }
+
