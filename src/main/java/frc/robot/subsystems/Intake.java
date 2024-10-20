@@ -17,20 +17,20 @@ public class Intake extends SubsystemBase {
         intakeMotor1.addFollower(intakeMotor2);
     }
 
-    public static void setPower(double power) {
+    public static void setPowers(double power) {
         intakeMotor1.set(power);
     }
 
     public void intake() {
-        setPower(-0.7);
+        setPowers(-0.7);
     }
 
     public void Outake() {
-        setPower(0.7);
+        setPowers(0.7);
     }
 
     public void stop() {
-        setPower(0);
+        setPowers(0);
     }
 
     public Command intakeCommand() {
@@ -40,5 +40,6 @@ public class Intake extends SubsystemBase {
     public Command outakeCommand() {
         return Commands.runEnd(this::Outake, () -> stop());
     }
+
 }
 
