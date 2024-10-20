@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Robot.RobotRunType;
+import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDs;
 
@@ -30,7 +31,7 @@ public class RobotContainer {
 
     Intake intake = new Intake();
     LEDs leds = new LEDs(9, 60);
-    Drive drive = new drive();
+    Drive notDrive = new Drive();
 
 
     /**
@@ -51,7 +52,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
         driver.y().whileTrue(intake.intakeCommand().alongWith(leds.intakeColorGreen()));
         driver.x().whileTrue(intake.outakeCommand());
-        
+        driver.driveCommand(Drive.driveCommand -> driver.getRightY());
 
     }
 
