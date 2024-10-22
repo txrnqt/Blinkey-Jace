@@ -4,6 +4,13 @@
       "window": {
         "visible": true
       }
+    },
+    "Other Devices": {
+      "Talon FX (v6)[51]/Rotor Sensor": {
+        "header": {
+          "open": true
+        }
+      }
     }
   },
   "NTProvider": {

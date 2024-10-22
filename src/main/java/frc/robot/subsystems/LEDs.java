@@ -48,4 +48,9 @@ public class LEDs extends SubsystemBase {
         Color green = Color.kGreen;
         return Commands.run(() -> setColor(green));
     }
+
+    public Command revLimit() {
+        Color purple = Color.kPurple;
+        return Commands.run(() -> setColor(purple));
+    }
 }
