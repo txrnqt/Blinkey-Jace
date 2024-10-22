@@ -20,8 +20,6 @@ public class ReedMotor {
         smthMoter2.set(0);
     }
 
-    public void reed() {}
-
     public Command onCommand() {
         return Commands.runEnd(this::on, () -> stop());
     }

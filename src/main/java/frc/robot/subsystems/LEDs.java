@@ -50,6 +50,11 @@ public class LEDs extends SubsystemBase {
     }
 
     public Command revLimit() {
+        int x = getEncoder();
+        while (x != 1000) {
+            break;
+        }
+
         Color purple = Color.kPurple;
         return Commands.run(() -> setColor(purple));
     }

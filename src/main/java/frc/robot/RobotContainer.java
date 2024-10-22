@@ -22,7 +22,8 @@ import frc.robot.subsystems.ReedMotor;
 public class RobotContainer {
     /* Controllers */
     private final CommandXboxController driver = new CommandXboxController(Constants.driverID);
-    private final CommandXboxController operator = new CommandXboxController(Constants.operatorID);
+    // private final CommandXboxController operator = new
+    // CommandXboxController(Constants.operatorID);
 
 
     // Initialize AutoChooser Sendable
