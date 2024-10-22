@@ -11,6 +11,7 @@ import frc.robot.Robot.RobotRunType;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.LEDs;
+import frc.robot.subsystems.ReedMotor;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -32,6 +33,7 @@ public class RobotContainer {
     Intake intake = new Intake();
     LEDs leds = new LEDs(9, 60);
     Drive notDrive = new Drive();
+    ReedMotor on = new ReedMotor();
 
 
     /**
@@ -52,8 +54,8 @@ public class RobotContainer {
     private void configureButtonBindings() {
         driver.y().whileTrue(intake.intakeCommand().alongWith(leds.intakeColorGreen()));
         driver.x().whileTrue(intake.outakeCommand());
-        driver.driveCommand(Drive.driveCommand -> driver.getRightY());
-
+        notDrive.setDefaultCommand(notDrive.teleopSwerve(driver));
+        driver.b().whileTrue(on.onCommand());
     }
 
     /**

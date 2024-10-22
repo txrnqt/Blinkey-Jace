@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class Drive extends SubsystemBase {
     VictorSP backLeft = new VictorSP(7);
@@ -12,6 +13,7 @@ public class Drive extends SubsystemBase {
 
     public Drive() {
         backLeft.addFollower(frontLeft);
+        frontLeft.setInverted(true);
         backRight.addFollower(frontRight);
     }
 
@@ -21,8 +23,8 @@ public class Drive extends SubsystemBase {
 
     }
 
-    public Command driveCommand() {
-        return Commands.runEnd(this::notDrive(x,x), () -> stop());
+    public Command teleopSwerve(CommandXboxController controller) {
+        return this.run(() -> notDrive(controller.getLeftY(), controller.getRightY()));
     }
 }
 
