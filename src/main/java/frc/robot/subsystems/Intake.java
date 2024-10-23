@@ -34,17 +34,19 @@ public class Intake extends SubsystemBase {
         setPowers(0);
     }
 
-    public Command makeIntakeWork() {
-        return intake().alongWith(leds.intakeColorGreen());
-    }
+
 
     public Command intakeCommand() {
-        return Commands.runEnd(this::makeIntakeWork, () -> stop());
+        return Commands.runEnd(this::intake, () -> stop());
 
     }
 
     public Command outakeCommand() {
         return Commands.runEnd(this::Outake, () -> stop());
+    }
+
+    public Command makeIntakeWork() {
+        return intakeCommand().alongWith(leds.intakeColorGreen());
     }
 
 

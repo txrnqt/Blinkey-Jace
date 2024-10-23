@@ -45,7 +45,7 @@ public class LEDs extends SubsystemBase {
     }
 
     public Command intakeColorGreen() {
-        Color green = Color.kGreen;1
+        Color green = Color.kGreen;
         return Commands.run(() -> setColor(green), this);
     }
 

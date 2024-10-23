@@ -54,7 +54,7 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        driver.y().whileTrue(intake.intakeCommand();
+        driver.y().whileTrue(intake.makeIntakeWork());
         driver.x().whileTrue(intake.outakeCommand());
         notDrive.setDefaultCommand(notDrive.teleopSwerve(driver));
         driver.b().whileTrue(on.onCommand());
