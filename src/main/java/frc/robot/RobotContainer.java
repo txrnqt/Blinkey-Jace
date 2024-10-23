@@ -37,6 +37,7 @@ public class RobotContainer {
     ReedMotor on = new ReedMotor();
 
 
+
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
@@ -53,7 +54,7 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        driver.y().whileTrue(intake.intakeCommand().alongWith(leds.intakeColorGreen()));
+        driver.y().whileTrue(intake.intakeCommand().alongWith(group);
         driver.x().whileTrue(intake.outakeCommand());
         notDrive.setDefaultCommand(notDrive.teleopSwerve(driver));
         driver.b().whileTrue(on.onCommand());

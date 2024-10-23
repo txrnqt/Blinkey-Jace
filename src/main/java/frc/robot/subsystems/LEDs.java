@@ -46,16 +46,16 @@ public class LEDs extends SubsystemBase {
 
     public Command intakeColorGreen() {
         Color green = Color.kGreen;
-        return Commands.run(() -> setColor(green));
+        return Commands.run(() -> setColor(green), this);
     }
 
-    public Command revLimit() {
-        int x = getEncoder();
-        while (x != 1000) {
+    public Command onForTime() {
+        while (ReedMotor.changeColor() == true) {
             break;
         }
-
         Color purple = Color.kPurple;
         return Commands.run(() -> setColor(purple));
     }
+
+
 }
