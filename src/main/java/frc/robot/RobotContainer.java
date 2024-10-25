@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -52,7 +53,7 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        driver.y().whileTrue(intake.intakeCommand());
+        driver.y().whileTrue(Commands.parallel(intake.intakeCommand(), leds.intakeColorGreen()));
         driver.x().whileTrue(intake.outakeCommand());
         notDrive.setDefaultCommand(notDrive.teleopSwerve(driver));
         driver.b().whileTrue(on.onCommand());
