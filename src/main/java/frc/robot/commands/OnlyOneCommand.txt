@@ -1,0 +1,24 @@
+package frc.robot.commands;
+
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.LEDs;
+
+
+public class OnlyOneCommand {
+
+    Intake intake = new Intake();
+    LEDs leds = new LEDs(9, 60);
+
+    public Command intake() {
+        return (intake.intakeCommand().alongWith(leds.intakeColorGreen()));
+    }
+
+    public Command outake() {
+        return intake.outakeCommand();
+    }
+
+    public Command setAllianceColor() {
+        return leds.setAllianceColor();
+    }
+}
