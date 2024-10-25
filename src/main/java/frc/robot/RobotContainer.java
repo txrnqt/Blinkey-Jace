@@ -22,8 +22,7 @@ import frc.robot.subsystems.ReedMotor;
 public class RobotContainer {
     /* Controllers */
     private final CommandXboxController driver = new CommandXboxController(Constants.driverID);
-    // private final CommandXboxController operator = new
-    // CommandXboxController(Constants.operatorID);
+    private final CommandXboxController operator = new CommandXboxController(Constants.operatorID);
 
 
     // Initialize AutoChooser Sendable
@@ -54,7 +53,7 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        driver.y().whileTrue(intake.makeIntakeWork());
+        driver.y().whileTrue(intake.intakeCommand0());
         driver.x().whileTrue(intake.outakeCommand());
         notDrive.setDefaultCommand(notDrive.teleopSwerve(driver));
         driver.b().whileTrue(on.onCommand());

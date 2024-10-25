@@ -9,7 +9,7 @@ public class Intake extends SubsystemBase {
 
     static VictorSP intakeMotor1 = new VictorSP(1);
     VictorSP intakeMotor2 = new VictorSP(2);
-    LEDs leds = new LEDs(9, 60);
+
 
     public Intake() {
         // inverts the motor turn direction (ture = yes)
@@ -43,10 +43,6 @@ public class Intake extends SubsystemBase {
 
     public Command outakeCommand() {
         return Commands.runEnd(this::Outake, () -> stop());
-    }
-
-    public Command makeIntakeWork() {
-        return intakeCommand().alongWith(leds.intakeColorGreen());
     }
 
 

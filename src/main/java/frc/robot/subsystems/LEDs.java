@@ -48,14 +48,4 @@ public class LEDs extends SubsystemBase {
         Color green = Color.kGreen;
         return Commands.run(() -> setColor(green), this);
     }
-
-    public Command onForTime() {
-        while (ReedMotor.changeColor() == true) {
-            break;
-        }
-        Color purple = Color.kPurple;
-        return Commands.run(() -> setColor(purple));
-    }
-
-
 }
