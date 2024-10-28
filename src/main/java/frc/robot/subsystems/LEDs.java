@@ -48,4 +48,9 @@ public class LEDs extends SubsystemBase {
         Color green = Color.kGreen;
         return Commands.run(() -> setColor(green), this);
     }
+
+    public Command reedMoterFullPower() {
+        Color purple = Color.kPurple;
+        return Commands.run(() -> setColor(purple), this);
+    }
 }

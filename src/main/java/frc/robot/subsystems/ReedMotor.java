@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
@@ -7,8 +8,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 
 public class ReedMotor {
-    CANSparkMax smthMoter = new CANSparkMax(57, MotorType.kBrushless);
-    TalonFX smthMoter2 = new TalonFX(51);
+    public CANSparkMax smthMoter = new CANSparkMax(57, MotorType.kBrushless);
+    public TalonFX smthMoter2 = new TalonFX(51);
+    private StatusSignal<Double> status = smthMoter2.getVelocity();
 
     public void on() {
         smthMoter.set(1);
@@ -18,6 +20,12 @@ public class ReedMotor {
     public void stop() {
         smthMoter.set(0);
         smthMoter2.set(0);
+    }
+
+    public boolean uhhhh() {
+        status.refresh();
+        double x = status.getValueAsDouble();
+        return (x >= 20);
     }
 
     public Command onCommand() {

@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Robot.RobotRunType;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Intake;
@@ -35,12 +36,12 @@ public class RobotContainer {
     LEDs leds = new LEDs(9, 60);
     Drive notDrive = new Drive();
     ReedMotor on = new ReedMotor();
-    // OnlyOneCommand com = new OnlyOneCommand();
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer(RobotRunType runtimeType) {
+
         leds.setDefaultCommand(leds.setAllianceColor().ignoringDisable(true));
         // Configure the button bindings
         configureButtonBindings();
@@ -57,6 +58,7 @@ public class RobotContainer {
         driver.x().whileTrue(intake.outakeCommand());
         notDrive.setDefaultCommand(notDrive.teleopSwerve(driver));
         driver.b().whileTrue(on.onCommand());
+        new Trigger(on::uhhhh).whileTrue(leds.reedMoterFullPower());
     }
 
     /**
