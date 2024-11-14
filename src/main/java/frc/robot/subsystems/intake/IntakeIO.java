@@ -8,13 +8,9 @@ public interface IntakeIO {
         public double intakeVelocityRotPerSecond;
     }
 
-    public default void setMotorVoltage(double voltage) {
+    public default void setMotorVoltage(double voltage) {}
 
-    }
-
-    public default void setMotorPercentage(double percent) {
-
-    }
+    public default void setMotorPercentage(double percent) {}
 
     public default void updateInputs(IntakeInputs inputs) {}
 

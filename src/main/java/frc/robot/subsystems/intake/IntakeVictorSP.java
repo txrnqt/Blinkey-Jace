@@ -6,9 +6,12 @@ public class IntakeVictorSP implements IntakeIO {
     private final VictorSP leftIntake = new VictorSP(1);
     private final VictorSP rightIntake = new VictorSP(2);
 
-    public void setMotorPrecentage(double power) {
+    public IntakeVictorSP() {
         rightIntake.setInverted(true);
         leftIntake.addFollower(rightIntake);
+    }
+
+    public void setMotorPrecentage(double power) {
         leftIntake.set(power);
     }
 

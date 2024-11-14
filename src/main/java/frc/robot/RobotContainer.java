@@ -4,16 +4,11 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Robot.RobotRunType;
-import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.LEDs;
-import frc.robot.subsystems.ReedMotor;
-import frc.robot.subsystems.intake.Intake;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -32,10 +27,9 @@ public class RobotContainer {
 
     /* Subsystems */
 
-    Intake intake = new Intake();
+
     LEDs leds = new LEDs(9, 60);
-    Drive notDrive = new Drive();
-    ReedMotor on = new ReedMotor();
+
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -54,11 +48,7 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        driver.y().whileTrue(Commands.parallel(intake.intakeCommand(), leds.intakeColorGreen()));
-        driver.x().whileTrue(intake.outakeCommand());
-        notDrive.setDefaultCommand(notDrive.teleopSwerve(driver));
-        driver.b().whileTrue(on.onCommand());
-        new Trigger(on::uhhhh).whileTrue(leds.reedMoterFullPower());
+
     }
 
     /**
