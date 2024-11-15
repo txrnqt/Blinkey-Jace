@@ -22,4 +22,8 @@ public class Tank extends SubsystemBase {
         Logger.recordOutput("Tank/rightVolts", rightVolts);
         io.setDriveVoltage(leftVolts, rightVolts);
     }
+
+    public void tankCMD() {
+
+    }
 }

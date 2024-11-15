@@ -1,6 +1,8 @@
 package frc.robot.subsystems.reedMotor;
 
 import org.littletonrobotics.junction.Logger;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ReedMotor extends SubsystemBase {
@@ -22,8 +24,11 @@ public class ReedMotor extends SubsystemBase {
         io.setMotorVoltage(power);
     }
 
-    public void MotorOff(double power) {
-        Logger.recordOutput("Intake/Voltage", power);
-        io.setMotorVoltage(0);
+    public Command ReedON(double power) {
+        return Commands.startEnd(() -> {
+            SetMotorVolatge(power);
+        }, () -> {
+            SetMotorVolatge(0);
+        }, this);
     }
 }

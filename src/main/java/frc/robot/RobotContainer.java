@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Robot.RobotRunType;
 import frc.robot.subsystems.LEDs;
+import frc.robot.subsystems.intake.Intake;
+import frc.robot.subsystems.reedMotor.ReedMotor;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -26,8 +28,8 @@ public class RobotContainer {
     private final SendableChooser<String> autoChooser = new SendableChooser<>();
 
     /* Subsystems */
-
-
+    private Intake intake;
+    private ReedMotor reed;
     LEDs leds = new LEDs(9, 60);
 
 
@@ -48,6 +50,9 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
+        driver.y().whileTrue(intake.intakeCMD(1));
+        driver.x().whileTrue(intake.OuttakeCMD(1));
+        driver.a().whileTrue(reed.ReedON(1));
 
     }
 

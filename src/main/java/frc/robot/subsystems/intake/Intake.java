@@ -2,7 +2,10 @@ package frc.robot.subsystems.intake;
 
 
 import org.littletonrobotics.junction.Logger;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 
 public class Intake extends SubsystemBase {
     private IntakeIO io;
@@ -23,9 +26,26 @@ public class Intake extends SubsystemBase {
         io.setMotorVoltage(power);
     }
 
-    public void MotorOff(double power) {
-        Logger.recordOutput("Intake/Voltage", power);
+    public void IntakeON() {
+        SetMotorVolatge(1);
+    }
+
+    public void MotorOff() {
         io.setMotorVoltage(0);
+    }
+
+    public Command intakeCMD(double power) {
+        return Commands.startEnd(() -> {
+            SetMotorVolatge(power);
+        }, () -> SetMotorVolatge(0), this);
+    }
+
+    public Command OuttakeCMD(double power) {
+        return Commands.startEnd(() -> {
+            SetMotorVolatge(-power);
+        }, () -> {
+            SetMotorVolatge(0);
+        }, this);
     }
 }
 
