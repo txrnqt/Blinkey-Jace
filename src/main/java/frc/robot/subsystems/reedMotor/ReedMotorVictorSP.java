@@ -10,13 +10,8 @@ public class ReedMotorVictorSP implements ReedMotorIO {
 
     public ReedMotorVictorSP() {}
 
-    public void setMotorVoltage(double power) {
+    public void setMotorPower(double power) {
         smthMoter1.set(power);
         smthMotor2.set(power);
-    }
-
-    public void reedSleep() {
-        smthMoter1.set(0);
-        smthMotor2.set(0);
     }
 }

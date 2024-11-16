@@ -10,7 +10,6 @@ public interface IntakeIO {
 
     public default void setMotorPower(double power) {}
 
-    public default void setMotorPercentage(double percent) {}
 
     public default void updateInputs(IntakeInputs inputs) {}
 
