@@ -9,7 +9,7 @@ public class ReedMotor extends SubsystemBase {
     private ReedMotorIO io;
     private InnerReedMotorIOAutoLogged inputs = new InnerReedMotorIOAutoLogged();
 
-    public ReedMotor() {
+    public ReedMotor(ReedMotorIO io) {
         this.io = io;
     }
 

@@ -1,9 +1,8 @@
 package frc.robot.subsystems.tank;
 
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
-import frc.robot.subsystems.intake.IntakeIO;
 
-public class TankVictorSP implements IntakeIO {
+public class TankVictorSP implements TankIO {
     private final VictorSP backLeft = new VictorSP(7);
     private final VictorSP backRight = new VictorSP(4);
     private final VictorSP frontLeft = new VictorSP(6);

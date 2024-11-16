@@ -1,14 +1,16 @@
 package frc.robot.subsystems.tank;
 
 import org.littletonrobotics.junction.Logger;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class Tank extends SubsystemBase {
     private TankIO io;
     private tankIOInputsAutoLogged inputs = new tankIOInputsAutoLogged();
 
-    public Tank(TankIO io) {
-        this.io = io;
+    public Tank(TankIO tankIO) {
+        this.io = tankIO;
     }
 
     @Override
@@ -23,7 +25,7 @@ public class Tank extends SubsystemBase {
         io.setDriveVoltage(leftVolts, rightVolts);
     }
 
-    public void tankCMD() {
-
+    public Command tankCMD(CommandXboxController controller) {
+        return this.run(() -> tankPower(controller.getLeftY(), controller.getRightY()));
     }
 }

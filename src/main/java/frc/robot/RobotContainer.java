@@ -10,7 +10,14 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Robot.RobotRunType;
 import frc.robot.subsystems.LEDs;
 import frc.robot.subsystems.intake.Intake;
+import frc.robot.subsystems.intake.IntakeIO;
+import frc.robot.subsystems.intake.IntakeVictorSP;
 import frc.robot.subsystems.reedMotor.ReedMotor;
+import frc.robot.subsystems.reedMotor.ReedMotorIO;
+import frc.robot.subsystems.reedMotor.ReedMotorVictorSP;
+import frc.robot.subsystems.tank.Tank;
+import frc.robot.subsystems.tank.TankIO;
+import frc.robot.subsystems.tank.TankVictorSP;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -30,6 +37,7 @@ public class RobotContainer {
     /* Subsystems */
     private Intake intake;
     private ReedMotor reed;
+    private Tank tank;
     LEDs leds = new LEDs(9, 60);
 
 
@@ -37,7 +45,40 @@ public class RobotContainer {
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer(RobotRunType runtimeType) {
+        switch (runtimeType) {
+            case kReal:
+                reed = new ReedMotor(new ReedMotorVictorSP());
+                break;
+            default:
+                reed = new ReedMotor(new ReedMotorIO() {
 
+                });
+                break;
+        }
+
+        switch (runtimeType) {
+            case kReal:
+                intake = new Intake(new IntakeVictorSP());
+                break;
+
+            default:
+                intake = new Intake(new IntakeIO() {
+
+                });
+                break;
+        }
+
+        switch (runtimeType) {
+            case kReal:
+                tank = new Tank(new TankVictorSP());
+                break;
+
+            default:
+                tank = new Tank(new TankIO() {
+
+                });
+                break;
+        }
         leds.setDefaultCommand(leds.setAllianceColor().ignoringDisable(true));
         // Configure the button bindings
         configureButtonBindings();
@@ -53,7 +94,7 @@ public class RobotContainer {
         driver.y().whileTrue(intake.intakeCMD(1));
         driver.x().whileTrue(intake.OuttakeCMD(1));
         driver.a().whileTrue(reed.ReedON(1));
-
+        tank.setDefaultCommand(tank.tankCMD(driver));
     }
 
     /**
