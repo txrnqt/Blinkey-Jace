@@ -21,30 +21,22 @@ public class Intake extends SubsystemBase {
         io.updateInputs(inputs);
     }
 
-    public void SetMotorVolatge(double power) {
+    public void SetMotorPower(double power) {
         Logger.recordOutput("Intake/Voltage", power);
-        io.setMotorVoltage(power);
-    }
-
-    public void IntakeON() {
-        SetMotorVolatge(1);
-    }
-
-    public void MotorOff() {
-        io.setMotorVoltage(0);
+        io.setMotorPower(power);
     }
 
     public Command intakeCMD(double power) {
         return Commands.startEnd(() -> {
-            SetMotorVolatge(power);
-        }, () -> SetMotorVolatge(0), this);
+            SetMotorPower(power);
+        }, () -> SetMotorPower(0), this);
     }
 
     public Command OuttakeCMD(double power) {
         return Commands.startEnd(() -> {
-            SetMotorVolatge(-power);
+            SetMotorPower(-power);
         }, () -> {
-            SetMotorVolatge(0);
+            SetMotorPower(0);
         }, this);
     }
 }

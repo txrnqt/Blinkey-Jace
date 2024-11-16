@@ -10,7 +10,7 @@ public class ReedMotorVictorSP implements ReedMotorIO {
 
     public ReedMotorVictorSP() {}
 
-    public void reedPowa(double power) {
+    public void setMotorVoltage(double power) {
         smthMoter1.set(power);
         smthMotor2.set(power);
     }

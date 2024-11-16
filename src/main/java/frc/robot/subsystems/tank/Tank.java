@@ -19,13 +19,14 @@ public class Tank extends SubsystemBase {
         io.updateInputs(inputs);
     }
 
-    public void tankPower(double leftVolts, double rightVolts) {
-        Logger.recordOutput("Tank/leftVolts", leftVolts);
-        Logger.recordOutput("Tank/rightVolts", rightVolts);
-        io.setDriveVoltage(leftVolts, rightVolts);
+    public void tankPower(double leftPower, double rightPower) {
+        Logger.recordOutput("Tank/leftVolts", leftPower);
+        Logger.recordOutput("Tank/rightVolts", rightPower);
+        io.setDrivePower(leftPower, rightPower);
     }
 
     public Command tankCMD(CommandXboxController controller) {
         return this.run(() -> tankPower(controller.getLeftY(), controller.getRightY()));
     }
+
 }

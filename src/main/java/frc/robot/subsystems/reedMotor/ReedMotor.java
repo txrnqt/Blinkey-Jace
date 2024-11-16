@@ -19,16 +19,16 @@ public class ReedMotor extends SubsystemBase {
         io.updateInputs(inputs);
     }
 
-    public void SetMotorVolatge(double power) {
+    public void SetMotorPower(double power) {
         Logger.recordOutput("Intake/Voltage", power);
-        io.setMotorVoltage(power);
+        io.setMotorPower(power);
     }
 
     public Command ReedON(double power) {
         return Commands.startEnd(() -> {
-            SetMotorVolatge(power);
+            SetMotorPower(power);
         }, () -> {
-            SetMotorVolatge(0);
+            SetMotorPower(0);
         }, this);
     }
 }

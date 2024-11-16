@@ -14,8 +14,12 @@ public class TankVictorSP implements TankIO {
         backRight.addFollower(frontRight);
     }
 
-    public void tankVolts(double leftVolts, double rightVolts) {
-        backLeft.set(leftVolts);
-        backRight.set(rightVolts);
+    public void tankPower(double leftPower, double rightPower) {
+        backLeft.set(leftPower);
+        backRight.set(rightPower);
     }
+
+    public void tankIOInputs() {}
+
+
 }
