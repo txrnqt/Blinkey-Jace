@@ -6,7 +6,12 @@ public interface ReedMotorIO {
 
     @AutoLog
     public static class InnerReedMotorIO {
-        public double reedsVelocityRotPerSecond;
+        public double smthMotor1VelocityRotPerSecond;
+        public double smthMotor1Voltage;
+    }
+
+    public default double encoder() {
+        return 0;
     }
 
     public default void setMotorPower(double power) {}

@@ -15,12 +15,12 @@ public class ReedMotor extends SubsystemBase {
 
     @Override
     public void periodic() {
-        Logger.processInputs("Intake", inputs);
+        Logger.processInputs("reed", inputs);
         io.updateInputs(inputs);
     }
 
     public void SetMotorPower(double power) {
-        Logger.recordOutput("Intake/Voltage", power);
+        Logger.recordOutput("reed", power);
         io.setMotorPower(power);
     }
 

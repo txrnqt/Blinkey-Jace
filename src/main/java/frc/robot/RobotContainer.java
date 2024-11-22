@@ -48,37 +48,17 @@ public class RobotContainer {
         switch (runtimeType) {
             case kReal:
                 reed = new ReedMotor(new ReedMotorVictorSP());
-                break;
-            default:
-                reed = new ReedMotor(new ReedMotorIO() {
-
-                });
-                break;
-        }
-
-        switch (runtimeType) {
-            case kReal:
                 intake = new Intake(new IntakeVictorSP());
-                break;
-
-            default:
-                intake = new Intake(new IntakeIO() {
-
-                });
-                break;
-        }
-
-        switch (runtimeType) {
-            case kReal:
                 tank = new Tank(new TankVictorSP());
+
                 break;
-
             default:
-                tank = new Tank(new TankIO() {
-
-                });
+                reed = new ReedMotor(new ReedMotorIO() {});
+                intake = new Intake(new IntakeIO() {});
+                tank = new Tank(new TankIO() {});
                 break;
         }
+
         leds.setDefaultCommand(leds.setAllianceColor().ignoringDisable(true));
         // Configure the button bindings
         configureButtonBindings();
@@ -92,7 +72,7 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         driver.y().whileTrue(intake.intakeCMD(1));
-        driver.x().whileTrue(intake.OuttakeCMD(1));
+        driver.x().whileTrue(intake.intakeCMD(-1));
         driver.a().whileTrue(reed.ReedON(1));
         tank.setDefaultCommand(tank.tankCMD(driver));
     }

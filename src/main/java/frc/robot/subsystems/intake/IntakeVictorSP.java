@@ -16,8 +16,4 @@ public class IntakeVictorSP implements IntakeIO {
     public void setMotorPower(double power) {
         leftIntake.set(power);
     }
-
-    public void intakeInactive() {
-        leftIntake.set(0);
-    }
 }
