@@ -8,6 +8,11 @@ public interface ReedMotorIO {
     public static class InnerReedMotorIO {
         public double smthMotor1VelocityRotPerSecond;
         public double smthMotor1Voltage;
+        public double smthMotor1Positon;
+        public double smthMotor2Position;
+        public double smthMotor2Velocety;
+        public double smthMotor2Voltage;
+        public boolean limitSwitch;
     }
 
     public default double encoder() {
