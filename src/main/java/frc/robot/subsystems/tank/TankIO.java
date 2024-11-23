@@ -14,6 +14,6 @@ public interface TankIO {
     public default void updateInputs(tankIOInputs inputs) {}
 
 
-    public default void setDrivePower(double lPower, double rPower) {}
+    public default void tankPower(double lPower, double rPower) {}
 
 }

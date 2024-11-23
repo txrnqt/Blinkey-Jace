@@ -22,7 +22,7 @@ public class Tank extends SubsystemBase {
     public void tankPower(double leftPower, double rightPower) {
         Logger.recordOutput("Tank/leftVolts", leftPower);
         Logger.recordOutput("Tank/rightVolts", rightPower);
-        io.setDrivePower(leftPower, rightPower);
+        io.tankPower(leftPower, rightPower);
     }
 
     public Command tankCMD(CommandXboxController controller) {

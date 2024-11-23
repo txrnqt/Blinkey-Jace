@@ -32,12 +32,4 @@ public class Intake extends SubsystemBase {
         }, () -> SetMotorPower(0), this);
     }
 
-    public Command OuttakeCMD(double power) {
-        return Commands.startEnd(() -> {
-            SetMotorPower(-power);
-        }, () -> {
-            SetMotorPower(0);
-        }, this);
-    }
 }
-

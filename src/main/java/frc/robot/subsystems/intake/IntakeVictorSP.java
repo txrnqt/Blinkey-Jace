@@ -11,11 +11,9 @@ public class IntakeVictorSP implements IntakeIO {
         leftIntake.addFollower(rightIntake);
     }
 
-    public void setMotorPrecentage(double percent) {
-        leftIntake.set(percent);
-    }
+    public void updateInputs() {}
 
-    public void intakeInactive() {
-        leftIntake.set(0);
+    public void setMotorPower(double power) {
+        leftIntake.set(power);
     }
 }
