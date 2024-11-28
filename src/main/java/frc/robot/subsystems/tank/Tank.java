@@ -26,7 +26,7 @@ public class Tank extends SubsystemBase {
     }
 
     public Command tankCMD(CommandXboxController controller) {
-        return this.run(() -> tankPower(controller.getLeftY(), controller.getRightY()));
+        return run(() -> tankPower(controller.getLeftY(), controller.getRightY()));
     }
 
 }
