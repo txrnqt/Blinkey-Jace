@@ -3,19 +3,22 @@ package frc.robot.subsystems.reedMotor;
 import com.ctre.phoenix6.BaseStatusSignal;
 import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.hardware.TalonFX;
-import com.revrobotics.CANSparkLowLevel.MotorType;
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
+import edu.wpi.first.units.measure.Angle;
+import edu.wpi.first.units.measure.AngularVelocity;
+import edu.wpi.first.units.measure.Voltage;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class ReedMotorVictorSP implements ReedMotorIO {
-    private final CANSparkMax smthMotor1 = new CANSparkMax(57, MotorType.kBrushless);
+    private final SparkMax smthMotor1 = new SparkMax(57, MotorType.kBrushless);
     private final TalonFX smthMotor2 = new TalonFX(51);
     private final DigitalInput limitSwitch = new DigitalInput(8);
     private final RelativeEncoder smthMotor1Encoder = smthMotor1.getEncoder();
-    private final StatusSignal<Double> smthMotor2Position;
-    private final StatusSignal<Double> smthMotor2Velocety;
-    private final StatusSignal<Double> smthMotor2Voltage;
+    private final StatusSignal<Angle> smthMotor2Position;
+    private final StatusSignal<AngularVelocity> smthMotor2Velocety;
+    private final StatusSignal<Voltage> smthMotor2Voltage;
 
     public ReedMotorVictorSP() {
         smthMotor2Position = smthMotor2.getPosition();
